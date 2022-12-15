@@ -21,10 +21,10 @@ namespace StreamerPack.Cosmetics.Hats
             playerOutfitComponent.Renderers.Add(GameObjectUtils.GetChildObject(Prefab, "Lemur Hat").GetComponent<SkinnedMeshRenderer>());
 
             MaterialUtils.ApplyMaterial<SkinnedMeshRenderer>(Prefab, "Lemur Hat", new Material[] {
+				MaterialUtils.GetExistingMaterial("Pavement"),
+				MaterialUtils.GetExistingMaterial("Mayonnaise"),
 				MaterialUtils.GetExistingMaterial("Clothing Black"),
-				MaterialUtils.GetExistingMaterial("Cashew - Heap"),
-				MaterialUtils.GetExistingMaterial("Clothing Black"),
-				MaterialUtils.GetExistingMaterial("Egg - Yolk")
+				MaterialUtils.GetExistingMaterial("Bread")
 			});
         }
     }
