@@ -4,7 +4,10 @@ using UnityEngine;
 using System.IO;
 using StreamerPack.Cosmetics.Hats;
 using StreamerPack.Cosmetics.Outfits;
-using System.Linq;
+using KitchenLib.Event;
+using Kitchen;
+using System.Collections.Generic;
+using KitchenLib.Customs;
 #if BEPINEX
 using BepInEx;
 #endif
@@ -23,6 +26,11 @@ namespace StreamerPack
 		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.0", "1.1.2", Assembly.GetExecutingAssembly()) { }
 
 		public static AssetBundle bundle;
+		public static List<int> OutfitIDS = new List<int>();
+		public static List<int> HatIDS = new List<int>();
+
+		public static List<string> OutfitNames = new List<string>();
+		public static List<string> HatNames = new List<string>();
 
 #if WORKSHOP
 		protected override void OnPostActivate(Mod mod)
@@ -36,21 +44,47 @@ namespace StreamerPack
 #if BEPINEX
 			bundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "streamerpack.assets"));
 #endif
-			AddGameDataObject<SipsOutfit>();
-			AddGameDataObject<PedguinOutfit>();
-			AddGameDataObject<HafuOutfit>();
-			AddGameDataObject<OntaioOutfit>();
-			AddGameDataObject<WonktootieOutfit>();
-			AddGameDataObject<MissMonicaOutfit>();
+			RegisterOutfit<SipsOutfit>("Sips Outfit");
+			RegisterOutfit<PedguinOutfit>("Pedguin Outfit");
+			RegisterOutfit<HafuOutfit>("Hafu Outfit");
+			RegisterOutfit<OntaioOutfit>("Ontaio Outfit");
+			RegisterOutfit<WonktootieOutfit>("Wonktootie Outfit");
+			RegisterOutfit<MissMonicaOutfit>("Miss Monica Outfit");
 
-			AddGameDataObject<CranchanHat>();
-			AddGameDataObject<ItsGNGHat>();
-			AddGameDataObject<LemurHat>();
-			AddGameDataObject<OntarioHat>();
-			AddGameDataObject<PedguinHat>();
-			AddGameDataObject<SkootieHat>();
-			AddGameDataObject<WonktootieHat>();
-			AddGameDataObject<MissMonicaHat>();
+			RegisterHat<CranchanHat>("Cranchan Hat");
+			RegisterHat<ItsGNGHat>("ItsGNG Hat");
+			RegisterHat<LemurHat>("Lemur Hat");
+			RegisterHat<OntarioHat>("Ontario Hat");
+			RegisterHat<PedguinHat>("Pedguin Hat");
+			RegisterHat<SkootieHat>("Skootie Hat");
+			RegisterHat<WonktootieHat>("Wonktootie Hat");
+			RegisterHat<MissMonicaHat>("Miss Monica Hat");
+
+			//Register Menu
+
+
+			Events.PreferenceMenu_PauseMenu_SetupEvent += (s, args) =>
+			{
+				args.mInfo.Invoke(args.instance, new object[] { "Streamer Outfit Pack", typeof(OutfitSelectionMenu<>).MakeGenericType(typeof(PauseMenuAction)), false });
+			};
+
+			Events.PreferenceMenu_PauseMenu_CreateSubmenusEvent += (s, args) => {
+				args.Menus.Add(typeof(OutfitSelectionMenu<PauseMenuAction>), new OutfitSelectionMenu<PauseMenuAction>(args.Container, args.Module_list));
+			};
+		}
+
+		public void RegisterOutfit<T>(string displayName) where T : CustomPlayerCosmetic, new()
+		{
+			CustomPlayerCosmetic outfit = AddGameDataObject<T>();
+			OutfitIDS.Add(outfit.ID);
+			OutfitNames.Add(displayName);
+		}
+
+		public void RegisterHat<T>(string displayName) where T : CustomPlayerCosmetic, new()
+		{
+			CustomPlayerCosmetic outfit = AddGameDataObject<T>();
+			HatIDS.Add(outfit.ID);
+			HatNames.Add(displayName);
 		}
 	}
 }

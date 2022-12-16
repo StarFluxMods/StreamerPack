@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<Reference Include="Controllers">
+	  <HintPath>..\..\..\..\Libraries\PlateUp_Data\Managed\Controllers.dll</HintPath>
+	</Reference>
 	<Reference Include="KitchenLib-Workshop" Condition="'$(Configuration)'=='Workshop'">
 	  <HintPath>..\..\..\..\Libraries\KitchenLib\KitchenLib-Workshop.dll</HintPath>
 	</Reference>

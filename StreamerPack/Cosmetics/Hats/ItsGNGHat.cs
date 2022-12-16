@@ -20,7 +20,7 @@ namespace StreamerPack.Cosmetics.Hats
             PlayerOutfitComponent playerOutfitComponent = Prefab.AddComponent<PlayerOutfitComponent>();
             playerOutfitComponent.Renderers.Add(GameObjectUtils.GetChildObject(Prefab, "ItsGNG Hat").GetComponent<SkinnedMeshRenderer>());
 			
-            MaterialUtils.ApplyMaterial<SkinnedMeshRenderer>(Prefab, "ItsGNG Hat", new Material[] { MaterialUtils.GetExistingMaterial("Cooked Batter") });
+            MaterialUtils.ApplyMaterial<SkinnedMeshRenderer>(Prefab, "ItsGNG Hat", new Material[] { MaterialUtils.GetExistingMaterial("Soup - Meat") });
         }
     }
 }
