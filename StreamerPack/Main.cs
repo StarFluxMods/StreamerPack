@@ -8,6 +8,7 @@ using KitchenLib.Event;
 using Kitchen;
 using System.Collections.Generic;
 using KitchenLib.Customs;
+using System.Linq;
 #if BEPINEX
 using BepInEx;
 #endif
@@ -19,11 +20,11 @@ namespace StreamerPack
 {
 #if BEPINEX
 	[BepInProcess("PlateUp.exe")]
-	[BepInPlugin("streamerpack", "Streamer Outfit Pack", "0.1.0")]
+	[BepInPlugin("streamerpack", "Streamer Outfit Pack", "0.1.2")]
 #endif
 	public class Main : BaseMod
 	{
-		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.0", "1.1.2", Assembly.GetExecutingAssembly()) { }
+		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.2", "1.1.2", Assembly.GetExecutingAssembly()) { }
 
 		public static AssetBundle bundle;
 		public static List<int> OutfitIDS = new List<int>();
@@ -31,19 +32,19 @@ namespace StreamerPack
 
 		public static List<string> OutfitNames = new List<string>();
 		public static List<string> HatNames = new List<string>();
-
 #if WORKSHOP
 		protected override void OnPostActivate(Mod mod)
-		{
-			bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).ToList()[0];
-		}
-#endif
-
+#else
 		protected override void OnInitialise()
+#endif
 		{
-#if BEPINEX
+
+#if WORKSHOP
+			bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).ToList()[0];
+#else
 			bundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "streamerpack.assets"));
 #endif
+
 			RegisterOutfit<SipsOutfit>("Sips Outfit");
 			RegisterOutfit<PedguinOutfit>("Pedguin Outfit");
 			RegisterOutfit<HafuOutfit>("Hafu Outfit");
@@ -59,8 +60,6 @@ namespace StreamerPack
 			RegisterHat<SkootieHat>("Skootie Hat");
 			RegisterHat<WonktootieHat>("Wonktootie Hat");
 			RegisterHat<MissMonicaHat>("Miss Monica Hat");
-
-			//Register Menu
 
 
 			Events.PreferenceMenu_PauseMenu_SetupEvent += (s, args) =>

@@ -20,3 +20,8 @@
 
 - Updated Materials of ItsGNG Hat
 - Added preferences menu to find the hats and outfits easier
+
+# Release Notes v0.1.2
+
+- Fixed a bug causing the game to hang when trying to join a multiplayer lobby
+- Changed preference menu to prevent it from being used in multiplayer lobbies

@@ -17,6 +17,16 @@ namespace StreamerPack
 		public override void Setup(int player_id)
 		{
 			PlayerManager pm = Unity.Entities.World.DefaultGameObjectInjectionWorld.GetExistingSystem<PlayerManager>();
+			if (pm == null)
+			{
+				AddInfo("This menu is only available when you're the host.");
+
+				AddButton(base.Localisation["MENU_BACK_SETTINGS"], delegate (int i)
+				{
+					this.RequestPreviousMenu();
+				}, 0, 1f, 0.2f);
+				return;
+			}
 			Player player;
 			pm.GetPlayer(player_id, out player, false);
 
@@ -49,11 +59,6 @@ namespace StreamerPack
 			}, 0, 1f, 0.2f);
 
 			New<SpacerElement>();
-
-			AddButton(base.Localisation["MENU_BACK_SETTINGS"], delegate (int i)
-			{
-				this.RequestPreviousMenu();
-			}, 0, 1f, 0.2f);
 		}
 
 		private Option<int> OutfitOptions = new Option<int>(Main.OutfitIDS, Main.OutfitIDS[0], Main.OutfitNames);
