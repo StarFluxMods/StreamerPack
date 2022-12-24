@@ -25,3 +25,10 @@
 
 - Fixed a bug causing the game to hang when trying to join a multiplayer lobby
 - Changed preference menu to prevent it from being used in multiplayer lobbies
+
+# Release Notes 0.1.3
+
+- Added Crispyfx Hat
+- Added Hatfilms Hat
+- Added Junkyard129 Hat
+- Added Stumpt Hat

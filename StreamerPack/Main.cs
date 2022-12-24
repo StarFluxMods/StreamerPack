@@ -20,11 +20,11 @@ namespace StreamerPack
 {
 #if BEPINEX
 	[BepInProcess("PlateUp.exe")]
-	[BepInPlugin("streamerpack", "Streamer Outfit Pack", "0.1.2")]
+	[BepInPlugin("streamerpack", "Streamer Outfit Pack", "0.1.3")]
 #endif
 	public class Main : BaseMod
 	{
-		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.2", "1.1.2", Assembly.GetExecutingAssembly()) { }
+		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.3", "1.1.2", Assembly.GetExecutingAssembly()) { }
 
 		public static AssetBundle bundle;
 		public static List<int> OutfitIDS = new List<int>();
@@ -60,6 +60,10 @@ namespace StreamerPack
 			RegisterHat<SkootieHat>("Skootie Hat");
 			RegisterHat<WonktootieHat>("Wonktootie Hat");
 			RegisterHat<MissMonicaHat>("Miss Monica Hat");
+			RegisterHat<CrispyfxHat>("Crispyfx Hat");
+			RegisterHat<HatfilmsHat>("Hatfilms Hat");
+			RegisterHat<Junkyard129Hat>("Junkyard129 Hat");
+			RegisterHat<StumptHat>("Stumpt Hat");
 
 
 			Events.PreferenceMenu_PauseMenu_SetupEvent += (s, args) =>
