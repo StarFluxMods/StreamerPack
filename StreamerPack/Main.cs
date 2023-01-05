@@ -51,6 +51,7 @@ namespace StreamerPack
 			RegisterOutfit<OntaioOutfit>("Ontaio Outfit");
 			RegisterOutfit<WonktootieOutfit>("Wonktootie Outfit");
 			RegisterOutfit<MissMonicaOutfit>("Miss Monica Outfit");
+			RegisterOutfit<DytolanOutfit>("Dytolan Outfit");
 
 			RegisterHat<CranchanHat>("Cranchan Hat");
 			RegisterHat<ItsGNGHat>("ItsGNG Hat");
@@ -64,6 +65,7 @@ namespace StreamerPack
 			RegisterHat<HatfilmsHat>("Hatfilms Hat");
 			RegisterHat<Junkyard129Hat>("Junkyard129 Hat");
 			RegisterHat<StumptHat>("Stumpt Hat");
+			RegisterHat<DytolanHat>("Dytolan Hat");
 
 
 			Events.PreferenceMenu_PauseMenu_SetupEvent += (s, args) =>

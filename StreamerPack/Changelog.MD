@@ -32,3 +32,8 @@
 - Added Hatfilms Hat
 - Added Junkyard129 Hat
 - Added Stumpt Hat
+
+# Release Notes 0.1.4
+
+- Added Dytolan Hat
+- Added Dytolan Outfit
