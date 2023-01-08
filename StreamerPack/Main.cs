@@ -65,6 +65,7 @@ namespace StreamerPack
 			RegisterHat<Junkyard129Hat>("Junkyard129 Hat");
 			RegisterHat<StumptHat>("Stumpt Hat");
 			RegisterHat<DytolanHat>("Dytolan Hat");
+			RegisterHat<FreedsirenHat>("Freedsiren Hat");
 
 			ModsPreferencesMenu<PauseMenuAction>.RegisterMenu("Streamer Outfit Pack", typeof(OutfitSelectionMenu<PauseMenuAction>), typeof(PauseMenuAction));
 
