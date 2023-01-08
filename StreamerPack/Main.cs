@@ -1,7 +1,6 @@
 ﻿using KitchenLib;
 using System.Reflection;
 using UnityEngine;
-using System.IO;
 using StreamerPack.Cosmetics.Hats;
 using StreamerPack.Cosmetics.Outfits;
 using KitchenLib.Event;
@@ -20,11 +19,11 @@ namespace StreamerPack
 {
 #if BEPINEX
 	[BepInProcess("PlateUp.exe")]
-	[BepInPlugin("streamerpack", "Streamer Outfit Pack", "0.1.3")]
+	[BepInPlugin("streamerpack", "Streamer Outfit Pack", "0.1.5")]
 #endif
 	public class Main : BaseMod
 	{
-		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.3", "1.1.2", Assembly.GetExecutingAssembly()) { }
+		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.5", "1.1.2", Assembly.GetExecutingAssembly()) { }
 
 		public static AssetBundle bundle;
 		public static List<int> OutfitIDS = new List<int>();
@@ -67,11 +66,7 @@ namespace StreamerPack
 			RegisterHat<StumptHat>("Stumpt Hat");
 			RegisterHat<DytolanHat>("Dytolan Hat");
 
-
-			Events.PreferenceMenu_PauseMenu_SetupEvent += (s, args) =>
-			{
-				args.mInfo.Invoke(args.instance, new object[] { "Streamer Outfit Pack", typeof(OutfitSelectionMenu<>).MakeGenericType(typeof(PauseMenuAction)), false });
-			};
+			ModsPreferencesMenu<PauseMenuAction>.RegisterMenu("Streamer Outfit Pack", typeof(OutfitSelectionMenu<PauseMenuAction>), typeof(PauseMenuAction));
 
 			Events.PreferenceMenu_PauseMenu_CreateSubmenusEvent += (s, args) => {
 				args.Menus.Add(typeof(OutfitSelectionMenu<PauseMenuAction>), new OutfitSelectionMenu<PauseMenuAction>(args.Container, args.Module_list));

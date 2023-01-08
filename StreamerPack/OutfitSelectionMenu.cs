@@ -58,7 +58,12 @@ namespace StreamerPack
 				pm.EntityManager.SetComponentData(player.Entity, cosmetics);
 			}, 0, 1f, 0.2f);
 
-			New<SpacerElement>();
+			New<SpacerElement>(true);
+			New<SpacerElement>(true);
+			AddButton(base.Localisation["MENU_BACK_SETTINGS"], delegate (int i)
+			{
+				this.RequestPreviousMenu();
+			}, 0, 1f, 0.2f);
 		}
 
 		private Option<int> OutfitOptions = new Option<int>(Main.OutfitIDS, Main.OutfitIDS[0], Main.OutfitNames);
