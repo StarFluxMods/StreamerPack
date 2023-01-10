@@ -21,9 +21,8 @@ namespace StreamerPack.Cosmetics.Hats
             playerOutfitComponent.Renderers.Add(GameObjectUtils.GetChildObject(Prefab, "Elmo Hat").GetComponent<SkinnedMeshRenderer>());
 
             MaterialUtils.ApplyMaterial<SkinnedMeshRenderer>(Prefab, "Elmo Hat", new Material[] {
-                MaterialUtils.GetCustomMaterial("Elmo"),
-                //MaterialUtils.GetExistingMaterial("Pipe Danger"),
-                MaterialUtils.GetExistingMaterial("Pumpkin") ,
+                MaterialUtils.GetExistingMaterial("Curtain"),
+                MaterialUtils.GetExistingMaterial("Pumpkin"),
                 MaterialUtils.GetExistingMaterial("Clothing Black") ,
                 MaterialUtils.GetExistingMaterial("Egg - White") });
         }

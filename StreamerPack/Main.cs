@@ -8,6 +8,7 @@ using Kitchen;
 using System.Collections.Generic;
 using KitchenLib.Customs;
 using System.Linq;
+using System.IO;
 #if BEPINEX
 using BepInEx;
 #endif
@@ -66,6 +67,8 @@ namespace StreamerPack
 			RegisterHat<StumptHat>("Stumpt Hat");
 			RegisterHat<DytolanHat>("Dytolan Hat");
 			RegisterHat<FreedsirenHat>("Freedsiren Hat");
+			RegisterHat<DrGluonHat>("Dr Gluon Hat");
+			RegisterHat<TristerTwisterHat>("Trister Twister Hat");
 
 			ModsPreferencesMenu<PauseMenuAction>.RegisterMenu("Streamer Outfit Pack", typeof(OutfitSelectionMenu<PauseMenuAction>), typeof(PauseMenuAction));
 
