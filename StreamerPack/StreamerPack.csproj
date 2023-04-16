@@ -1,12 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <Configurations>Debug;Release;BepInEx;Workshop</Configurations>
     <AssemblyName>$(MSBuildProjectName)-$(Configuration)</AssemblyName>
   </PropertyGroup>
+	<PropertyGroup Condition=" '$(COMPUTERNAME)' == 'DadsCreditCard' ">
+		<AssetBundlePath>C:\Users\Pilch\Desktop\PlateUp! Workspace\PlateUp! Asset Creation Zone\Assets\StreamingAssets\streamerpack.assets</AssetBundlePath>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(COMPUTERNAME)' != 'DadsCreditCard' ">
+		<AssetBundlePath>C:\Users\Pilch\Onedrive\Desktop\PlateUp! Workspace\PlateUp! Asset Creation Zone\Assets\StreamingAssets\streamerpack.assets</AssetBundlePath>
+	</PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Yariazen.PlateUp.ModBuildUtilities" Version="1.6.16" />
 	<Reference Include="Controllers">
 	  <HintPath>..\..\..\..\Libraries\PlateUp_Data\Managed\Controllers.dll</HintPath>
 	</Reference>

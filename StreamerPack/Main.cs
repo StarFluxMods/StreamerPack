@@ -24,7 +24,7 @@ namespace StreamerPack
 #endif
 	public class Main : BaseMod
 	{
-		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.5", "1.1.2", Assembly.GetExecutingAssembly()) { }
+		public Main() : base("streamerpack", "Streamer Outfit Pack", "StarFluxGames", "0.1.6", ">=1.1.4", Assembly.GetExecutingAssembly()) { }
 
 		public static AssetBundle bundle;
 		public static List<int> OutfitIDS = new List<int>();
@@ -46,17 +46,22 @@ namespace StreamerPack
 #endif
 
 			RegisterOutfit<SipsOutfit>("Sips Outfit");
+			
 			RegisterOutfit<PedguinOutfit>("Pedguin Outfit");
 			RegisterOutfit<HafuOutfit>("Hafu Outfit");
 			RegisterOutfit<OntaioOutfit>("Ontaio Outfit");
 			RegisterOutfit<WonktootieOutfit>("Wonktootie Outfit");
 			RegisterOutfit<MissMonicaOutfit>("Miss Monica Outfit");
 			RegisterOutfit<DytolanOutfit>("Dytolan Outfit");
+			RegisterOutfit<ElseeOutfit>("Elsee Outfit");
+			RegisterOutfit<CourtillyOutfit>("Courtilly Outfit");
 
 			RegisterHat<CranchanHat>("Cranchan Hat");
+			RegisterHat<CourtillyHat>("Courtilly Hat");
 			RegisterHat<ItsGNGHat>("ItsGNG Hat");
 			RegisterHat<LemurHat>("Lemur Hat");
 			RegisterHat<OntarioHat>("Ontario Hat");
+			RegisterHat<KulutuesHat>("Kulutues Hat");
 			RegisterHat<PedguinHat>("Pedguin Hat");
 			RegisterHat<SkootieHat>("Skootie Hat");
 			RegisterHat<WonktootieHat>("Wonktootie Hat");
@@ -69,6 +74,7 @@ namespace StreamerPack
 			RegisterHat<FreedsirenHat>("Freedsiren Hat");
 			RegisterHat<DrGluonHat>("Dr Gluon Hat");
 			RegisterHat<TristerTwisterHat>("Trister Twister Hat");
+			
 
 			ModsPreferencesMenu<PauseMenuAction>.RegisterMenu("Streamer Outfit Pack", typeof(OutfitSelectionMenu<PauseMenuAction>), typeof(PauseMenuAction));
 
